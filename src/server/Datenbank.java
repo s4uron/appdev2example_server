@@ -70,6 +70,17 @@ public class Datenbank {
         return benutzerliste;
     }
     
+    
+    public void loescheBenutzer(Benutzer benutzer) {
+        try {            
+           PreparedStatement st = connection.prepareStatement("DELETE FROM benutzer WHERE name LIKE ?");
+           st.setString(1, benutzer.name);
+           st.executeUpdate(); 
+        } catch (SQLException ex) {
+             System.out.println("Fehler beim laden der Benutzer! "+ex.getMessage());
+        }
+    }
+    
     /**
      * Methode um einen Benutzer zu speichern.
      * @param benutzer Ein benutzer wird übergeben

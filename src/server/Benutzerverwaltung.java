@@ -30,6 +30,17 @@ public class Benutzerverwaltung extends UnicastRemoteObject implements Benutzerv
         System.out.println("Benutzer "+name+" wurde erstellt");
         
     }
+    
+    @Override
+    public void benutzerLoeschen(String name) throws RemoteException {
+        for(Benutzer b : benutzer) {
+            if(b.name.equals(name)) {
+                benutzer.remove(b);
+                db.loescheBenutzer(b);
+                System.out.println("Benutzer "+b.name+" gelöscht");
+            }
+        }
+    }
 
     public Benutzerverwaltung() throws RemoteException, SQLException {
         this.benutzer = new ArrayList<>();

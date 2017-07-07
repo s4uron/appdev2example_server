@@ -20,4 +20,6 @@ public interface BenutzerverwaltungInterface extends Remote {
     public abstract String alleBenutzer() throws RemoteException;
     
     public abstract void alleBenutzerLoeschen() throws RemoteException;
+    
+    public abstract void benutzerLoeschen(String name) throws RemoteException;
 }
